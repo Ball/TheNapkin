@@ -3,6 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheNapkin", "TheNapkin\TheNapkin.csproj", "{4AC127A3-855D-4189-998D-F99E1B46F0F4}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DCC0D359-AC55-415B-9F93-536978156F25}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		README = README
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
