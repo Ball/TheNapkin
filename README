@@ -1,0 +1,12 @@
+The Napkin
+===========================================
+
+This is a quick sketch program that is meant for use with a wacom tablet.
+
+It is an experiment in Bug-Driven Development.  It's an experiment in reactive programming.
+
+Bugs
+-------------------------------------------
+
+Bug00001 - The app wont start
+Bug00002 - Moving the stylus over the napkin doesn't make a mark
