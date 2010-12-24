@@ -23,7 +23,8 @@ namespace TheNapkin
             var stylusDown = Observable.FromEvent<StylusDownEventArgs>(theCanvas, "StylusDown");
             var stylusUp   = Observable.FromEvent<StylusEventArgs>(theCanvas, "StylusUp");
             var stylusMove = Observable.FromEvent<StylusEventArgs>(theCanvas, "StylusMove")
-                .Select(rm => rm.EventArgs.StylusDevice.GetStylusPoints(theCanvas).First())
+                .Where(sm => sm.EventArgs.Inverted == false )
+                .Select(sm => sm.EventArgs.StylusDevice.GetStylusPoints(theCanvas).First())
                 .Select(p => new { p.X, p.Y, p.PressureFactor });
 
             var stylusDiffs = stylusMove
