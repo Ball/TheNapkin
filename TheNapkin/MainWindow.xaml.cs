@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
@@ -43,6 +44,15 @@ namespace TheNapkin
                     Y2 = item.Y2,
                     StrokeThickness = 25 * item.Pressure
                 };
+                var ellipse = new Ellipse
+                {
+                    Fill = Brushes.Black,
+                    Width = 25 * item.Pressure,
+                    Height = 25 * item.Pressure
+                };
+                Canvas.SetLeft(ellipse, item.X1 - 12.5 * item.Pressure);
+                Canvas.SetTop(ellipse, item.Y1 - 12.5 * item.Pressure);
+                theCanvas.Children.Add(ellipse);
                 theCanvas.Children.Add(line);
             });
         }
