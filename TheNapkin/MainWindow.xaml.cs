@@ -22,12 +22,12 @@ namespace TheNapkin
             var stylusDown = Observable.FromEvent<StylusDownEventArgs>(theCanvas, "StylusDown");
             var stylusUp   = Observable.FromEvent<StylusEventArgs>(theCanvas, "StylusUp");
             var stylusMove = Observable.FromEvent<StylusEventArgs>(theCanvas, "StylusMove")
-                .Select(mm => mm.EventArgs.GetPosition(theCanvas))
-                .Select(p  => new {p.X, p.Y});
+                .Select(rm => rm.EventArgs.StylusDevice.GetStylusPoints(theCanvas).First())
+                .Select(p => new { p.X, p.Y, p.PressureFactor });
 
             var stylusDiffs = stylusMove
                 .Skip(1)
-                .Zip(stylusMove, (l, r) => new { X1 = l.X, Y1 = l.Y, X2 = r.X, Y2 = r.Y });
+                .Zip(stylusMove, (l, r) => new { X1 = l.X, Y1 = l.Y, X2 = r.X, Y2 = r.Y, Pressure = l.PressureFactor });
 
             var stylusDrag = from __ in stylusDown
                              from md in stylusDiffs.TakeUntil(stylusUp)
@@ -41,7 +41,7 @@ namespace TheNapkin
                     X2 = item.X2,
                     Y1 = item.Y1,
                     Y2 = item.Y2,
-                    StrokeThickness = 1
+                    StrokeThickness = 25 * item.Pressure
                 };
                 theCanvas.Children.Add(line);
             });
