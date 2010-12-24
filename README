@@ -8,8 +8,9 @@ It is an experiment in Bug-Driven Development.  It's an experiment in reactive p
 Bugs
 -------------------------------------------
 
-Bug00001 - The app wont start
-Bug00002 - Moving the stylus over the napkin doesn't make a mark
-Bug00003 - The Stylus doesn't vary with pressure
-Bug00004 - The pressure lines arent' smooth
-Bug00005 - Eraser also makes a mark.
+Bug00001 Done - The app wont start
+Bug00002 Done - Moving the stylus over the napkin doesn't make a mark
+Bug00003 Done - The Stylus doesn't vary with pressure
+Bug00004 Done - The pressure lines arent' smooth
+Bug00005 Done - Eraser also makes a mark
+Bug00006 - Can't change color
