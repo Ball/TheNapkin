@@ -5,25 +5,43 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
+using System.ComponentModel;
 
 namespace TheNapkin
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow
+    public partial class MainWindow : INotifyPropertyChanged
     {
         private readonly IDisposable _mouseSub;
+        private Color _chosenColor;
+        private Brush _chosenBrush;
+        public Brush SelectedBrush { get { return _chosenBrush; } }
+        public Color PickedColor
+        {
+            get { return _chosenColor; }
+            set
+            {
+                _chosenColor = value;
+                _chosenBrush = new SolidColorBrush(value);
+                OnPropertyChanged("PickedColor");
+                OnPropertyChanged("SelectedBrush");
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public MainWindow()
         {
+            PickedColor = Colors.Black;
             InitializeComponent();
             Unloaded += This_Unloaded;
 
             var stylusDown = Observable.FromEvent<StylusDownEventArgs>(theCanvas, "StylusDown");
-            var stylusUp   = Observable.FromEvent<StylusEventArgs>(theCanvas, "StylusUp");
+            var stylusUp = Observable.FromEvent<StylusEventArgs>(theCanvas, "StylusUp");
             var stylusMove = Observable.FromEvent<StylusEventArgs>(theCanvas, "StylusMove")
-                .Where(sm => sm.EventArgs.Inverted == false )
+                .Where(sm => sm.EventArgs.Inverted == false)
                 .Select(sm => sm.EventArgs.StylusDevice.GetStylusPoints(theCanvas).First())
                 .Select(p => new { p.X, p.Y, p.PressureFactor });
 
@@ -38,7 +56,7 @@ namespace TheNapkin
             {
                 var line = new Line
                 {
-                    Stroke = Brushes.Black,
+                    Stroke = SelectedBrush,
                     X1 = item.X1,
                     X2 = item.X2,
                     Y1 = item.Y1,
@@ -47,7 +65,7 @@ namespace TheNapkin
                 };
                 var ellipse = new Ellipse
                 {
-                    Fill = Brushes.Black,
+                    Fill = SelectedBrush,
                     Width = 25 * item.Pressure,
                     Height = 25 * item.Pressure
                 };
@@ -62,6 +80,14 @@ namespace TheNapkin
         {
             Unloaded -= This_Unloaded;
             _mouseSub.Dispose();
+        }
+
+        public void OnPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
         }
     }
 }

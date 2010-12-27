@@ -13,4 +13,11 @@ Bug00002 Done - Moving the stylus over the napkin doesn't make a mark
 Bug00003 Done - The Stylus doesn't vary with pressure
 Bug00004 Done - The pressure lines arent' smooth
 Bug00005 Done - Eraser also makes a mark
-Bug00006 - Can't change color
+Bug00006 Done - Can't change color
+Bug00007 - Performance hit after drawing for a long time
+           Suspect it has to do with far to many WPF objects on the canvas
+		   Is there a way to simplify?
+Bug00008 - Can't Undo an errant stroke
+           Can a create a stack of strokes...
+Bug00009 - Can't erase a portion of any stroke
+Bug00010 - Background should look like a napkin

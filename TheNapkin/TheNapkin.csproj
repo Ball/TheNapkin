@@ -53,15 +53,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Rx-Main.1.0.2787.0\lib\Net4\System.Reactive.dll</HintPath>
     </Reference>
-    <Reference Include="System.Reactive.ClientProfile">
-      <HintPath>..\packages\Rx-ClientProfile.1.0.2787.0\lib\Net4\System.Reactive.ClientProfile.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Reactive.ExtendedProfile">
-      <HintPath>..\packages\Rx-ExtendedProfile.1.0.2787.0\lib\Net4\System.Reactive.ExtendedProfile.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Reactive.Testing">
-      <HintPath>..\packages\Rx-Testing.1.0.2787.0\lib\Net4\System.Reactive.Testing.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -73,6 +64,9 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WPFToolkit.Extended">
+      <HintPath>..\..\..\..\Documents\Libraries\WPFToolkit.Extended.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">

@@ -1,9 +1,24 @@
 ﻿<Window x:Class="TheNapkin.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:toolkit="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit.Extended"
+        x:Name="theWindow"
         Title="MainWindow" Height="350" Width="525">
-    <Canvas x:Name="theCanvas"
-            Background="White">
-        
-    </Canvas>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="40"/>
+        </Grid.ColumnDefinitions>
+        <Canvas x:Name="theCanvas"
+                Grid.Column="0"
+                Grid.Row="0"
+                Background="White">
+        </Canvas>
+        <StackPanel Grid.Column="1" Grid.Row="0" Background="GhostWhite">
+            <toolkit:ColorPicker x:Name="picker" SelectedColor="{Binding PickedColor,ElementName=theWindow}"/>
+        </StackPanel>
+    </Grid>
 </Window>
